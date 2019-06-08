@@ -62,6 +62,7 @@ a:hover::after {
   position: absolute;
   top: 0;
   transform: translate(-0.2rem, 0.2rem) rotate(5deg);
+  z-index: -1;
 }
 
 li:nth-of-type(2) a:hover::after {
