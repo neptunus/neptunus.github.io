@@ -1,97 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+  <title>neptúnus</title>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather&display=swap" rel="stylesheet">
 </head>
 <style type="text/css">
-	html,body {
-		height: 100%;
-		background-color: #8F9DB2;
-	}
-	body {
-		display: flex;
-		flex-direction: column-reverse;
-		justify-content: center;
-		align-items: center;
-		overflow: hidden;
-	}
-	img {
-		animation: spin 1000ms infinite;
-		transform: rotate(0deg);
-		animation-timing-function: linear;
-	}	
-	.scaler {
-		transform: scale(1);
-		/*animation: scale-up 200s;*/
-
-	}
-	.shadow-orb {
-		box-shadow:-1rem 3rem 5rem -1.9rem #555D6B, 8rem 6rem 16rem -2.9rem #555D6B;
-		background-color: #555D6B;
-		width: 24rem;
-		height: 24rem;
-		overflow: hidden;
-		border-radius: 100%;
-		flex-shrink: 0;
-		margin: -8rem 0;
-		z-index: 5;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.shadow-orb:nth-of-type(1) {
-		transform: translate(calc(6rem*4), calc(6rem*-6));
-	}
-	.shadow-orb:nth-of-type(1) {
-		transform: translate(calc(6rem*4), calc(6rem*-6));
-	}
-	.shadow-orb:not(:nth-of-type(3)) {
-		display: none;
-	}
-	.shadow-orb:nth-of-type(3) {
-		transform: translateX(calc(6rem*0));
-	}
-	.shadow-orb:nth-of-type(4) {
-		transform: translateX(calc(6rem*-2));
-		z-index: 4;
-	}
-	.shadow-orb:nth-of-type(5) {
-		transform: translate(calc(6rem*-4), calc(6rem*6));
-	}
-
-	@keyframes spin {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	}
-	@keyframes scale-up {
-		0% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(5);
-		}
-	}
+  html,body {
+    background-color: #8F9DB2;
+    height: 100%;
+  }
+  body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: calc(20rem*1.6);
+    overflow: hidden;
+  }
+  .warning :first-child{
+    margin: 0;
+  }
+  img {
+    animation: spin 2000ms infinite;
+    animation-timing-function: linear;
+    pointer-events: none;
+    transform: rotate(0deg);
+  }
+  .scaler {
+    animation: scale-up 500s;
+  }
+  .shadow-orb {
+    align-items: center;
+    border-radius: 100%;
+    box-shadow: 2rem 2rem 8rem 1.6rem hsla(218deg, 11%, 38%, 0.5);
+    display: flex;
+    flex-shrink: 0;
+    height: 20rem;
+    justify-content: center;
+    margin-bottom: auto;
+    margin-top: 2rem;
+    order: 3;
+    overflow: hidden;
+    transform: scale(1);
+    transition: box-shadow 350ms ease-out, transform 350ms ease-out;
+    width: 20rem;
+    z-index: 0;
+  }
+  .shadow-orb:hover {
+    box-shadow: 0rem 1rem 1.5rem 0rem hsla(218deg, 11%, 38%, 1);
+    cursor: zoom-in;
+    transform: scale(0.93);
+    transition: box-shadow 300ms ease-out, transform 300ms ease-out;
+  }
+  .shadow-orb:focus {
+    box-shadow: 2rem 2rem 8rem 1.6rem hsla(218deg, 11%, 38%, 0.5);
+    outline: none;
+    pointer-events: none;
+    transform: scale(1.6);
+    transition: box-shadow 350ms ease-in, transform 350ms ease-out;
+  }
+  .shadow-orb ~ * {
+    transition: opacity 350ms ease, transform 350ms ease-out;
+  }
+  .shadow-orb ~ .main {
+    opacity: 0;
+    transform: translateY(-4rem);
+  }
+  .shadow-orb:focus ~ * {
+    opacity: 0;
+  }
+  .shadow-orb:focus ~ .main {
+    opacity: 1;
+    transform: translateY(-8rem);
+  }
+  h1 {
+    font-family: 'Merriweather', serif;
+    color: rgb(9, 71, 94);
+  }
+  .main {
+    color: rgb(4, 26, 39);
+    margin-top: 20rem;
+    order: 2;
+    line-height: 1.4rem;
+  }
+  .main > * {
+    margin: 0;
+  }
+  .main > * + *{
+    margin-top: 1.5rem;
+  }
+  .main > h1 + *{
+    margin-top: 2rem;
+  }
+  .signature {
+    text-align: right;
+    font-size: 1.2rem;
+  }
+  a {
+    text-decoration: none;
+    color: rgb(62, 95, 137);
+    position: relative;
+  }
+  a:hover {
+    color: white;
+  }
+  a:hover::before {
+    width: calc(100% + 6px);
+    height: calc(100%);
+    top: 1px;
+    position: absolute;
+    left: -3px;
+    content: '';
+    background-color: rgb(58, 137, 156);
+    z-index: -1;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes scale-up {
+    0% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(6);
+    }
+  }
 
 </style>
 <body>
-<div class="shadow-orb">
-	<div class="scaler"><img src="./spin.png"></div>
+
+<div tabindex=1  class="shadow-orb">
+  <div class="scaler"><img src="./spin.png"></div>
 </div>
-<div class="shadow-orb">
-	<div class="scaler"><img src="./spin.png"></div>
+
+<div class="main">
+  <h1>Hi! Glad to meet ya.</h1>
+  <p>If you're interested, I keep some code over at <a href="https://github.com/neptunus">Github</a> and sometimes I might post something on <a href="https://twitter.com/ne_ptun_us">Twitter</a>. If you want to reach me, e-mail me at <a href="mailto://ne@ptun.us">ne@ptun.us</a>!</p>
+  <p>Now, until next time, get on outta here before you're hypnotised. 😅</p>
+  <p class="signature">Neptúnus Egilsson</p>
 </div>
-<div class="shadow-orb">
-	<div class="scaler"><img src="./spin.png"></div>
-</div>
-<div class="shadow-orb">
-	<div class="scaler"><img src="./spin.png"></div>
-</div>
-<div class="shadow-orb">
-	<div class="scaler"><img src="./spin.png"></div>
+
+<div class="warning">
+  <p>If animations don't agree with you, please <button>disable animations</button>.</p>
 </div>
 
 </body>
