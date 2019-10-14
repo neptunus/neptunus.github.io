@@ -17,8 +17,18 @@ body {
   width: max-content;
 }
 
-body > * + * {
+main > * {
   margin-top: calc(var(--border-thickness) * -1)
+}
+
+main {
+  position: relative;
+  transform: translateY(-15%);
+  animation: 800ms ease-out 00ms 1 both print;
+}
+
+@keyframes print {
+    to {transform: translateY(0%)}
 }
 
 .stack {
@@ -50,7 +60,7 @@ body > * + * {
   -webkit-background-size: 100% 1.5rem;
 }
 
-.box:first-child {
+header.box {
   background: hsl(0deg, 0%, 100%);
   width: 50ch;
   border-style: solid double;
@@ -58,7 +68,7 @@ body > * + * {
   z-index: 1;
 }
 
-.box:nth-child(2) {
+.box:nth-child(1) {
   border-top-style: solid;
 }
 
