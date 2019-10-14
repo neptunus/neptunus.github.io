@@ -5,6 +5,7 @@
 
 :root {
   font-size: 24px;
+  letter-spacing: 1px;
   --brand-color: hsl(170deg, 80%, 0%);
   --border-thickness: 0.3rem;
 }
@@ -17,7 +18,7 @@ body {
 }
 
 body > * + * {
-  margin-top: calc(var(--border-thickness) * -1 + 1px)
+  margin-top: calc(var(--border-thickness) * -1)
 }
 
 .stack {
@@ -37,7 +38,7 @@ body > * + * {
 .box {
   min-height: 15ch;
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -45,25 +46,24 @@ body > * + * {
   width: 45ch;
   border: var(--border-thickness) black;
   border-style: dotted solid;
-  background-color: hsl(0deg, 0%, 100%);
+  background: -webkit-linear-gradient(top, #ddd 0, #fff 3px) 0 0;
+  -webkit-background-size: 100% 1.5rem;
 }
 
 .box:first-child {
+  background: hsl(0deg, 0%, 100%);
   width: 50ch;
   border-style: solid double;
   border-radius: 0.75rem;
+  z-index: 1;
 }
 
 .box:nth-child(2) {
   border-top-style: solid;
 }
 
-.box > * {
-  z-index: 1;
-}
-
 .box > * + * {
-  margin-top: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 a {
@@ -79,7 +79,12 @@ h1 {
   font-size: 1.8rem;
   font-weight: 500;
 }
-
+h2 {
+  line-height: 1.5rem;
+}
+p {
+    line-height: 1.5rem;
+}
 a[href="mailto:n@ptun.us"] {
   display: inline-block;
   color: hsl(170deg, 80%, 30%);
