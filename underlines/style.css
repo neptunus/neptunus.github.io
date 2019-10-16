@@ -1,0 +1,106 @@
+.underline-animated {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  line-height: 1.5em;
+}
+
+/* Underline layer. */
+.underline-animated::before {
+  position: absolute;
+  left: 0;
+  content: attr(data-text);
+  text-decoration: underline;
+  z-index: -2;
+}
+
+/* Overlay layer. Slides away to reaveal the underline layer */
+.underline-animated::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: hsl(0, 0%, 100%);
+  content: "";
+  z-index: -1;
+  transition: transform 400ms ease,
+              opacity 400ms ease;
+}
+
+.underline-animated:hover::after {
+  transition: transform 250ms ease-out;
+}
+
+.slide-right:hover::after {
+  transform: translateX(100%);
+}
+
+.slide-left:hover::after {
+  transform: translateX(-100%);
+}
+
+.underline-animated.grow-from-middle::after {
+  display: none;
+}
+.grow-from-middle::before {
+    transition: -webkit-clip-path 400ms ease,
+                        clip-path 400ms ease;
+
+/* Mask starts with all X-coordinates in the center so it has a width of 0 */
+    -webkit-clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+            clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+}
+.grow-from-middle:hover::before {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.meet-in-middle:hover::after {
+  transform: scaleX(0);
+}
+
+.fade-in:hover::after {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+/*
+  general styles
+*/
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  margin: 0;
+}
+
+.box {
+    padding: 2rem;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.box > * + * {
+  margin-top: 2.5rem;
+}
+.box > * > p:first-child {
+  margin-left: 2ch;
+}
+
+ul[class] {
+  list-style: none;
+}
