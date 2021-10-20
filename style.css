@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  padding: 1rem;
+  padding: .5rem;
 }
 
 main {
@@ -16,11 +16,15 @@ main {
 
 header {
   display: flex;
-  align-items: center;
+}
+
+header > * {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 header * + * {
-  margin-left: 1.2rem;
+  margin-left: .75rem;
 }
 
 h1 {
@@ -47,5 +51,38 @@ li + li {
 
 .svg {
   filter:
-    invert(.15);
+    invert(.12);
   }
+
+header * > small {
+  display: block;
+  font-size: initial;
+  font-weight: initial;
+  letter-spacing: .8px;
+  line-height: 1;
+}
+
+header > .image-container {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 414px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  header * > small {
+      transform: translate(4rem, -.5rem);
+  }
+
+  header * + * {
+    margin-left: .5rem;
+  }
+
+  header > .image-container {
+    margin-top: .5rem;
+    display: block;
+  }
+}
+
