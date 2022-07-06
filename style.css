@@ -3,7 +3,7 @@
 }
 
 html {
-  font-size: 120%;
+  font-size: 110%;
 }
 
 body {
@@ -55,6 +55,26 @@ img[src$=".svg"] {
   width: 100%;
 }
 
+hr {
+  --rule-icon: attr(data-icon);
+  height: 2px;
+  border: none;
+  border-bottom: 2px solid rgb(83, 83, 83);
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+hr::after {
+  content: var(--rule-icon, none);
+  text-align: center;
+  width: 1.5em;
+  font-size: 2em;
+  background-color: white;
+}
+
 header * > small {
   display: block;
   font-size: initial;
@@ -66,6 +86,15 @@ header * > small {
 header > .image-container {
   display: flex;
   align-items: center;
+}
+
+footer { 
+  border-top: 1px solid;
+  margin-top: 3em;
+}
+
+footer p {
+  font-style: italic;
 }
 
 .skip-link a {
