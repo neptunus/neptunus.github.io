@@ -7,11 +7,8 @@ html {
 }
 
 body {
-  padding: .5rem;
-}
-
-main {
-  max-width: 65ch;
+  padding-left: .5rem;
+  padding-right: .5rem;
 }
 
 header {
@@ -38,21 +35,25 @@ p {
 }
 
 ul {
-  padding-left: 1.5rem;
+  padding-left: 1rem;
 }
 
 li {
-  list-style: circle;
+  list-style: none;
+}
+
+li::before {
+  content: "❀";
 }
 
 li + li {
   margin-top: .4rem;
 }
 
-.svg {
-  filter:
-    invert(.12);
-  }
+img[src$=".svg"] {
+  filter: invert(.16);
+  width: 100%;
+}
 
 header * > small {
   display: block;
@@ -82,8 +83,17 @@ header > .image-container {
 
 @media (min-width: 414px) {
   body {
-    padding: 1.5rem;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
   }
+
+  main {
+    box-sizing: content-box;
+    max-width: 60ch;
+    padding: 2rem;
+  }  
 
   header * > small {
       transform: translate(4rem, -.5rem);
