@@ -91,6 +91,7 @@ header * > small {
 header > .image-container {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 header img {
@@ -117,6 +118,12 @@ footer p {
 .skip-link a:focus{
   transform: translateY(10px);
   transition: transform 100ms ease-in;
+}
+
+@media (max-width: 414px) {
+  header > .image-container {
+    flex: 1;
+  }
 }
 
 @media (min-width: 414px) {
