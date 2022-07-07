@@ -52,10 +52,6 @@ li::before {
   content: var(--list-icon, '•');
 }
 
-li + li {
-  margin-top: .4rem;
-}
-
 img[src$=".svg"] {
   filter: invert(.16);
   width: 100%;
@@ -65,7 +61,7 @@ hr {
   --rule-icon: attr(data-icon);
   height: 2px;
   border: none;
-  border-bottom: 2px solid rgb(83, 83, 83);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(35, 73, 111), rgba(0, 0, 0, 0));
   margin-top: 2em;
   margin-bottom: 2em;
   display: flex;
@@ -80,6 +76,7 @@ hr[data-icon]::after {
   text-align: center;
   width: 1.6em;
   font-size: 1.6em;
+  color: rgb(27, 61, 95);
   background-color: white;
 }
 
@@ -101,7 +98,7 @@ header img {
 }
 
 footer { 
-  border-top: 1px solid;
+  border-top: .5px solid;
   margin-top: 3em;
 }
 
