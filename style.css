@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Noto Sans Symbols 2";
+  src: url(./NotoSansSymbols2-Regular.ttf);
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -13,15 +18,13 @@ body {
 
 header {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 header > * {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-header * + * {
-  margin-left: .75rem;
 }
 
 h1 {
@@ -43,6 +46,7 @@ li {
 }
 
 li::before {
+  font-family: "Noto Sans Symbols 2", monospace;
   content: "❀";
 }
 
@@ -65,13 +69,15 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 hr::after {
+  font-family: "Noto Sans Symbols 2", monospace;
   content: var(--rule-icon, none);
   text-align: center;
-  width: 1.5em;
-  font-size: 2em;
+  width: 1.6em;
+  font-size: 1.6em;
   background-color: white;
 }
 
@@ -86,6 +92,10 @@ header * > small {
 header > .image-container {
   display: flex;
   align-items: center;
+}
+
+header img {
+  max-width: 45px;
 }
 
 footer { 
@@ -123,6 +133,11 @@ footer p {
     max-width: 60ch;
     padding: 2rem;
   }  
+
+  header{
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 
   header * > small {
       transform: translate(4rem, -.5rem);
