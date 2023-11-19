@@ -1,33 +1,46 @@
 @font-face {
   font-family: "Noto Sans Symbols 2";
   src: url(./NotoSansSymbols2-Regular.ttf);
+  font-display: block;
+  ascent-override: 120%;
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
-html {
+:root {
   --list-icon: "❀";
 
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-size: 110%;
 }
 
 body {
-  padding-left: .5rem;
-  padding-right: .5rem;
+  padding-inline: .5rem;
 }
 
 header {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  position: relative;
 }
 
-header > * {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+header * + * {
+  margin-left: .5rem;
 }
+
+header > .image-container {
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
 
 h1 {
   font-size: 2.4rem;
@@ -36,30 +49,33 @@ h1 {
 }
 
 p {
-  letter-spacing: .1px;
+  letter-spacing: 0.008em;
+}
+
+* + p {
+  margin-top: 1em;
 }
 
 ul {
-  padding-left: 1rem;
+  line-height: 1.4;
 }
 
-li {
+ul:not([class]) {
   list-style: none;
 }
 
-li::before {
-  font-family: "Noto Sans Symbols 2", monospace;
-  content: var(--list-icon, '•');
+ul.inline {
+  padding-inline-start: 1rem;
+  list-style: var(--list-icon);
 }
 
-img[src$=".svg"] {
-  filter: invert(.16);
-  width: 100%;
+ul.inline > li {
+  padding-inline-start: 0.5em;
 }
 
 hr {
   --rule-icon: attr(data-icon);
-  height: 2px;
+  height: 1px;
   border: none;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(35, 73, 111), rgba(0, 0, 0, 0));
   margin-top: 2em;
@@ -80,31 +96,44 @@ hr[data-icon]::after {
   background-color: white;
 }
 
-header * > small {
+header .tagline {
+  position: absolute;
+  bottom: -1em;
+  left: 8em;
+  right:0;
   display: block;
   font-size: initial;
+  white-space: pre-line;
   font-weight: initial;
   letter-spacing: .6px;
   line-height: 1;
 }
 
-header > .image-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+article {
+  line-height: 1.3;
+  margin-block: 3em;
+}
+
+header > :first-child {
+  margin-bottom: 1em;
 }
 
 header img {
   max-width: 45px;
 }
 
-footer { 
-  border-top: .5px solid;
-  margin-top: 3em;
+footer {
+  border-block-start: .5px solid;
+  margin-block-start: 3em;
+  padding-block: 1em;
 }
 
 footer p {
   font-style: italic;
+}
+
+.fullwidth {
+  width: 100%;
 }
 
 .skip-link a {
@@ -120,42 +149,77 @@ footer p {
   transition: transform 100ms ease-in;
 }
 
-@media (max-width: 414px) {
-  header > .image-container {
-    flex: 1;
-  }
-}
-
 @media (min-width: 414px) {
+  :root {
+    --main-padding: 2rem;
+    --content-width: calc(66ch + var(--main-padding) * 2);
+  }
+
   body {
     padding: 0;
     margin: 0;
     min-height: 100vh;
-    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
   }
 
   main {
-    box-sizing: content-box;
-    max-width: 60ch;
-    padding: 2rem;
-  }  
-
-  header{
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-
-  header * > small {
-      transform: translate(4rem, -.5rem);
-  }
-
-  header * + * {
-    margin-left: .5rem;
-  }
-
-  header > .image-container {
-    margin-top: .5rem;
-    display: block;
+    max-width: var(--content-width);
+    padding-block: 2rem;
+    padding-inline: var(--main-padding);
   }
 }
 
+@media (min-width: 1500px) {
+  :root {
+    --main-padding: 8rem;
+  }
+}
+
+main {
+  margin-inline: auto;
+}
+
+@media (min-aspect-ratio: 1.4) and (min-height: 700px) {
+  main {
+    margin-inline: unset;
+  }
+  #page-decoration {
+    overflow: hidden;
+    overscroll-behavior-block: contain;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - var(--content-width));
+    z-index: -1;
+    background: linear-gradient(white, transparent);
+  }
+
+  #page-decoration > div {
+    position: absolute;
+    inset: 0px;
+    background-image: url('./background.jpg') ;
+    background-size: cover;
+    background-position: 50% 30%;
+  }
+}
+
+@media (pointer: coarse) {
+  a {
+    position: relative;
+  }
+  a::after {
+    content: '';
+    inset: 0px;
+    position: absolute;
+    min-height: 1cm;
+    min-width: max(100%, 2cm);
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+  ul a {
+    line-height: 1cm;
+  }
+}
