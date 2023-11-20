@@ -44,7 +44,7 @@ header > .image-container {
 
 h1 {
   font-size: 2.4rem;
-  letter-spacing: 1.6px;
+  letter-spacing: -0.02em;
   color: #111;
 }
 
@@ -98,14 +98,14 @@ hr[data-icon]::after {
 
 header .tagline {
   position: absolute;
-  bottom: -1em;
-  left: 8em;
+  bottom: -0.7em;
+  left: 7.5em;
   right:0;
   display: block;
   font-size: initial;
   white-space: pre-line;
   font-weight: initial;
-  letter-spacing: .6px;
+  letter-spacing: 0.015em;
   line-height: 1;
 }
 
