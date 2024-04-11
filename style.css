@@ -1,226 +1,46 @@
-@font-face {
-  font-family: "Noto Sans Symbols 2";
-  src: url(./NotoSansSymbols2-Regular.ttf);
-  font-display: block;
-  ascent-override: 120%;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
+* {
   margin: 0;
   padding: 0;
 }
 
-:root {
-  --list-icon: "❀";
-
-  box-sizing: border-box;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  font-size: 110%;
-}
-
 body {
-  padding-inline: .5rem;
-  font-family: 'Times New Roman', Times, serif;
-}
-
-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  position: relative;
-}
-
-header * + * {
-  margin-left: .5rem;
-}
-
-header > .image-container {
-  display: block;
-  align-items: center;
-  justify-content: center;
-}
-
-
-h1 {
-  font-size: 2.4rem;
-  letter-spacing: -0.02em;
-  color: #111;
-}
-
-p {
-  letter-spacing: 0.008em;
-}
-
-* + p {
-  margin-top: 1em;
-}
-
-ul {
-  line-height: 1.4;
-}
-
-ul:not([class]) {
-  list-style: none;
-}
-
-ul.inline {
-  padding-inline-start: 1rem;
-  list-style: var(--list-icon);
-}
-
-ul.inline > li {
-  padding-inline-start: 0.5em;
-}
-
-hr {
-  --rule-icon: attr(data-icon);
-  height: 1px;
-  border: none;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(35, 73, 111), rgba(0, 0, 0, 0));
-  margin-top: 2em;
-  margin-bottom: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-hr[data-icon]::after {
-  font-family: "Noto Sans Symbols 2", monospace;
-  content: var(--rule-icon, none);
-  text-align: center;
-  width: 1.6em;
-  font-size: 1.6em;
-  color: rgb(27, 61, 95);
-  background-color: white;
-}
-
-header .tagline {
-  position: absolute;
-  bottom: -1em;
-  left: 7.5em;
-  right:0;
-  display: block;
-  font-size: initial;
-  white-space: pre-line;
-  font-weight: initial;
-  letter-spacing: 0.015em;
-  line-height: 1;
-}
-
-article {
-  line-height: 1.3;
-  margin-block: 3em;
-}
-
-header > :first-child {
-  margin-bottom: 1em;
-}
-
-header img {
-  max-width: 45px;
-}
-
-footer {
-  border-block-start: .5px solid;
-  margin-block-start: 3em;
-  padding-block: 1em;
-}
-
-footer p {
-  font-style: italic;
-}
-
-.fullwidth {
-  width: 100%;
-}
-
-.skip-link a {
-  position: absolute;
-  left: 10px;
-  top: 0;
-  transform: translateY(-100%);
-  transition: transform 100ms ease-out;
-}
-
-.skip-link a:focus{
-  transform: translateY(10px);
-  transition: transform 100ms ease-in;
-}
-
-@media (min-width: 414px) {
-  :root {
-    --main-padding: 2rem;
-    --content-width: calc(66ch + var(--main-padding) * 2);
-  }
-
-  body {
-    padding: 0;
-    margin: 0;
-    min-height: 100vh;
-    align-items: stretch;
-    justify-content: stretch;
-  }
-
-  main {
-    max-width: var(--content-width);
-    padding-block: 2rem;
-    padding-inline: var(--main-padding);
-  }
-}
-
-@media (min-width: 1500px) {
-  :root {
-    --main-padding: 8rem;
-  }
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: rgb(213, 213, 213);
+  overflow-y: scroll;
 }
 
 main {
-  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  padding-block: 4rem;
+  padding-inline: 1rem;
 }
 
-@media (min-aspect-ratio: 1.4) and (min-height: 700px) {
-  main {
-    margin-inline: unset;
-  }
-  #page-decoration {
-    overflow: hidden;
-    overscroll-behavior-block: contain;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: calc(100% - var(--content-width));
-    z-index: -1;
-    background: linear-gradient(white, transparent);
-  }
-
-  #page-decoration > div {
-    position: absolute;
-    inset: 0px;
-    background-image: url('./background.jpg') ;
-    background-size: cover;
-    background-position: 50% 30%;
-  }
+h1, h2 {
+  font-weight: normal;
 }
 
-@media (pointer: coarse) {
-  a {
-    position: relative;
-  }
-  a::after {
-    content: '';
-    inset: 0px;
-    position: absolute;
-    min-height: 1cm;
-    min-width: max(100%, 2cm);
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-  }
-  ul a {
-    line-height: 1cm;
-  }
+.card {
+  border: 2px outset #b3b3b3;
+  max-width: 420px;
+  flex: 1;
+  padding: 1.5rem;
+  background-color: rgb(237, 237, 237);
+}
+
+* + :is(p, h2, ul, ol, details, figure) {
+  margin-block-start: 1em;
+}
+
+img + figcaption {
+  margin-block-start: 0.5em;
+  text-align: center;
+}
+
+summary {
+  cursor: default;
+}
+
+:is(ul, ol):not([class]) {
+  padding-inline-start: 1em;
 }
