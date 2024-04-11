@@ -5,7 +5,7 @@
 
 body {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: rgb(213, 213, 213);
+  background-color: rgb(171, 200, 215);
   overflow-y: scroll;
 }
 
@@ -21,11 +21,12 @@ h1, h2 {
 }
 
 .card {
-  border: 2px outset #b3b3b3;
+  border: 4px double black;
+  border-radius: 8px;
   max-width: 420px;
   flex: 1;
   padding: 1.5rem;
-  background-color: rgb(237, 237, 237);
+  background-color: white;
 }
 
 * + :is(p, h2, ul, ol, details, figure, footer) {
