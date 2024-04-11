@@ -28,7 +28,7 @@ h1, h2 {
   background-color: rgb(237, 237, 237);
 }
 
-* + :is(p, h2, ul, ol, details, figure) {
+* + :is(p, h2, ul, ol, details, figure, footer) {
   margin-block-start: 1em;
 }
 
@@ -43,4 +43,12 @@ summary {
 
 :is(ul, ol):not([class]) {
   padding-inline-start: 1em;
+}
+
+footer {
+  text-align: center;
+}
+
+.icon {
+  font-size: 2.5rem;
 }
