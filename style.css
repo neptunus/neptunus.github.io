@@ -17,12 +17,16 @@ main {
 }
 
 h1, h2 {
+  letter-spacing: -0.02em;
+  line-break: normal;
+  line-height: 1;
   font-weight: normal;
 }
 
 .card {
   border: 4px double black;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px -5px color(srgb 0.1845 0.34 0.41 / 0.55);
   max-width: 420px;
   flex: 1;
   padding: 1.5rem;
