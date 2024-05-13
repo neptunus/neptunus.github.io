@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "excalibur": "^0.29.3",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.1",
+    "parcel": "^2.12.0",
+    "typescript": "^5.4.5"
+  }
+}

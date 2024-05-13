@@ -1,0 +1,2 @@
+dev:
+  npx parcel src/index.html --no-autoinstall

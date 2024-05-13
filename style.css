@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -16,6 +17,10 @@ main {
   padding-inline: 1rem;
 }
 
+h1 {
+  font-size: 1.6rem;
+}
+
 h1, h2 {
   letter-spacing: -0.02em;
   line-break: normal;
@@ -24,7 +29,7 @@ h1, h2 {
 }
 
 .card {
-  border: 4px double black;
+  position: relative;
   border-radius: 10px;
   box-shadow: 0 10px 20px -5px color(srgb 0.1845 0.34 0.41 / 0.55);
   max-width: 420px;
@@ -56,4 +61,28 @@ footer {
 
 .icon {
   font-size: 2.5rem;
+}
+
+button.secret {
+  position: absolute;
+  left: 100%;
+  bottom: 10%;
+  display: flex;
+  appearance: none;
+  border: unset;
+  background-color: crimson;
+  color: white;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 3px;
+  transform: translateX(var(--translate-x, -100%));
+  font-size: 1.2rem;
+}
+button.secret[data-visible="true"] {
+  --translate-x: 0%;
+}
+.vertical {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  margin-inline: 5px;
 }
